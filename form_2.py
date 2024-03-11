@@ -8,11 +8,11 @@ import io
 import base64 
 
 # Escape username and password
-username = urllib.parse.quote_plus("khushi")
-password = urllib.parse.quote_plus("Khushi@2109")
+username = urllib.parse.quote_plus("tanay")
+password = urllib.parse.quote_plus("Tanay@123")
 
 # Construct the MongoDB connection string
-connection_string = f"mongodb+srv://{username}:{password}@cluster1.kajywqv.mongodb.net/"
+connection_string ="mongodb+srv://tanay:Tanay%40123@tanay.drqdft7.mongodb.net/"
 
 def main():
     st.title("Data Retrieval")
@@ -26,12 +26,14 @@ def main():
     if st.button("Submit"):
         # Connect to the MongoDB server
         client = pymongo.MongoClient(connection_string)
+
+        client.server_selection_timeout = None
         
         # Select a database
         db = client["Sample_DB"]
         
         # Select a collection within the database
-        collection = db["Sample_Coll"]
+        collection = db["Sample_Col"]
 
         # Convert date objects to datetime
         from_date = datetime.datetime.combine(from_date, datetime.time.min)
